@@ -1,5 +1,6 @@
 FROM mariadb:10.2
 
+COPY qpress/qpress.tar /tmp/
 RUN set -x \
     && apt-get update \
     && apt-get install -y --no-install-recommends --no-install-suggests \
@@ -9,7 +10,6 @@ RUN set -x \
       percona-toolkit \
       percona-xtrabackup \
       pv \
-    && curl -sSL -o /tmp/qpress.tar http://www.quicklz.com/qpress-11-linux-x64.tar \
     && tar -C /usr/local/bin -xf /tmp/qpress.tar qpress \
     && chmod +x /usr/local/bin/qpress \
     && rm -rf /tmp/* /var/cache/apk/* /var/lib/apt/lists/*

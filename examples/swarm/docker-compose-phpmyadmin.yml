@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      PMA_ARBITRARY: '1'
+      PMA_HOST: db
+    ports:
+     - 8081:80
+    networks:
+     - galera_galera_network
+    logging:
+      driver: json-file
+networks:
+  galera_galera_network:
+    external: true

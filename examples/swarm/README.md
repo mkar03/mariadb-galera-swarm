@@ -17,6 +17,11 @@ $ docker service scale galera_seed=0
 $ docker service scale galera_node=3
 ```
 
+PHPMyAdmin (optional):
+```
+$ docker stack deploy -c docker-compose-phpmyadmin.yml phpmyadmin 
+```
+
 The example `docker-compose.yml` file contains a user network called `galera_network`. You may want to use a different network
 that is shared with other components of your app or multiple networks. Just note that the `NODE_ADDRESS` pattern must be able
 to match addresseses allocated within the network you use for inter-node communication without matching any other bound addresses.
